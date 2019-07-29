@@ -1,0 +1,9 @@
+---
+# tasks file for deploy_apache
+
+  - name: install apache
+    yum:
+      name: httpd
+
+
+

@@ -1,0 +1,43 @@
+---
+- name: Install 3-tire applcation
+  hosts: all
+  gather_facts: false # remove later! speeds up testing
+  become: true
+  roles:
+    - enable_repos
+
+- name: deploy haproxy
+  hosts: frontends
+  become: true
+  roles:
+     - deploy_haproxy
+
+- name: deploy tomcat
+  hosts: apps
+  become: true
+  roles:
+     - deploy_tomcat
+
+- name: index.html on app 1
+  hosts: app1
+  become: true
+  roles:
+     - app1index
+
+- name: index.html on app 2
+  hosts: app1
+  become: true
+  roles:
+     - app2index
+
+- name: deploy postgres
+  hosts: appdbs
+  become: true
+  roles:
+     - deploy_postgres
+
+- name: deploy apache
+  hosts: apps
+  become: true
+  roles: 
+     - deploy_apache/
