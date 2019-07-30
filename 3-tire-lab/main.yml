@@ -40,4 +40,4 @@
   hosts: apps
   become: true
   roles: 
-     - deploy_apache/
+     - deploy_apache
